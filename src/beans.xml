@@ -16,6 +16,8 @@
 	<bean id="indexAction" class="cjb.shop.index.action.IndexAction" scope="prototype">
 	</bean>
 	
+	<bean id="userAction" class="cjb.shop.user.action.UserAction" scope="prototype">
+	</bean>
 </beans>
 
 
