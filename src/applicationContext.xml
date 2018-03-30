@@ -17,7 +17,7 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<!-- 注入属性值 -->
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql:///bookstore"></property>
+		<property name="jdbcUrl" value="jdbc:mysql:///internetshop"></property>
 		<property name="user" value="root"></property>
 		<property name="password" value="cjb19950615"></property>
 	</bean>
@@ -31,6 +31,13 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 			</props>
+		</property>
+		
+		<!-- 配置映射文件引入 -->
+		<property name="mappingResources">
+			<list>
+				<value>cjb/shop/user/domain/User.hbm.xml</value>
+			</list>
 		</property>
 	</bean>
 	

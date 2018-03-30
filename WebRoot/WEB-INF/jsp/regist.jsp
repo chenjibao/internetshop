@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -6,29 +8,75 @@
 <title>会员注册</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/css/register.css" rel="stylesheet" type="text/css"/>
+
 <script>
-function checkForm(){
-	// 校验用户名:
-	// 获得用户名文本框的值:
-	var username = document.getElementById("username").value;
-	if(username == null || username == ''){
-		alert("用户名不能为空!");
-		return false;
+	function checkForm(){
+		// 校验用户名:
+		// 获得用户名文本框的值:
+		var username = document.getElementById("username").value;
+		if(username == null || username == ''){
+			alert("用户名不能为空!");
+			return false;
+		}
+		// 校验密码:
+		// 获得密码框的值:
+		var password = document.getElementById("password").value;
+		if(password == null || password == ''){
+			alert("密码不能为空!");
+			return false;
+		}
+		// 校验确认密码:
+		var repassword = document.getElementById("repassword").value;
+		if(repassword != password){
+			alert("两次密码输入不一致!");
+			return false;
+		}
 	}
-	// 校验密码:
-	// 获得密码框的值:
-	var password = document.getElementById("password").value;
-	if(password == null || password == ''){
-		alert("密码不能为空!");
-		return false;
+	
+	
+	function checkUsername(){
+		// 获得文件框值:
+		var username = document.getElementById("username").value;
+		// 1.创建异步交互对象
+		var xhr = createXmlHttp();
+		// 2.设置监听
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				if(xhr.status == 200){
+					document.getElementById("span1").innerHTML = xhr.responseText;
+				}
+			}
+		}
+		// 3.打开连接
+		xhr.open("GET","${pageContext.request.contextPath}/user_findByUsername.action?time="+new Date().getTime()+"&username="+username,true);
+		// 4.发送
+		xhr.send(null);
 	}
-	// 校验确认密码:
-	var repassword = document.getElementById("repassword").value;
-	if(repassword != password){
-		alert("两次密码输入不一致!");
-		return false;
+	
+	function createXmlHttp(){
+		   var xmlHttp;
+		   try{ // Firefox, Opera 8.0+, Safari
+		        xmlHttp=new XMLHttpRequest();
+		    }
+		    catch (e){
+			   try{// Internet Explorer
+			         xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+			      }
+			    catch (e){
+			      try{
+			         xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			      }
+			      catch (e){}
+			      }
+		    }
+
+			return xmlHttp;
+		 }
+	
+	function change(){
+		var img1 = document.getElementById("checkImg");
+		img1.src="${pageContext.request.contextPath}/checkImg.action?"+new Date().getTime();
 	}
-}
 </script>
 </head>
 <body>
@@ -44,7 +92,9 @@ function checkForm(){
 <div class="headerAd">
 					<img src="${pageContext.request.contextPath}/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
 </div>	</div>
-<%@ include file="menu.jsp" %>
+	
+	<%@ include file="menu.jsp" %>
+
 </div>	<div class="container register">
 		<div class="span24">
 			<div class="wrap">
@@ -52,14 +102,18 @@ function checkForm(){
 					<div class="title">
 						<strong>会员注册</strong>USER REGISTER
 					</div>
-					<form id="registerForm"  method="post" novalidate="novalidate" onsubmit="return checkForm()">
+					<div>
+						<s:actionerror />
+					</div>
+					<form id="registerForm" action="${ pageContext.request.contextPath }/user_regist.action"  method="post" novalidate="novalidate" onsubmit="return checkForm();">
 						<table>
 							<tbody><tr>
 								<th>
 									<span class="requiredField">*</span>用户名:
 								</th>
 								<td>
-									<input type="text" id="username" name="username" class="text" maxlength="20">
+									<input type="text" id="username" name="username" class="text" maxlength="20" onblur="checkUsername()"/>
+									<span id="span1"></span>
 								</td>
 							</tr>
 							<tr>
@@ -67,7 +121,8 @@ function checkForm(){
 									<span class="requiredField">*</span>密&nbsp;&nbsp;码:
 								</th>
 								<td>
-									<input type="password" id="password" name="password" class="text" maxlength="20" autocomplete="off">
+									<input type="password" id="password" name="password" class="text" maxlength="20" autocomplete="off"/>
+									<span><s:fielderror fieldName="password"/></span>
 								</td>
 							</tr>
 							<tr>
@@ -75,7 +130,7 @@ function checkForm(){
 									<span class="requiredField">*</span>确认密码:
 								</th>
 								<td>
-									<input type="password" id="repassword" name="repassword" class="text" maxlength="20" autocomplete="off">
+									<input id="repassword" type="password" name="repassword" class="text" maxlength="20" autocomplete="off"/>
 								</td>
 							</tr>
 							<tr>
@@ -84,6 +139,7 @@ function checkForm(){
 								</th>
 								<td>
 									<input type="text" id="email" name="email" class="text" maxlength="200">
+									<span><s:fielderror fieldName="email"/></span>
 								</td>
 							</tr>
 									<tr>
@@ -91,15 +147,17 @@ function checkForm(){
 											姓名:
 										</th>
 										<td>
-												<input type="text" name="name" class="text" maxlength="200">
+												<input type="text" name="name" class="text" maxlength="200"/>
+												<span><s:fielderror fieldName="name"/></span>
 										</td>
 									</tr>
+									
 									<tr>
 										<th>
 											电话:
 										</th>
 										<td>
-												<input type="text" name="phone" class="text">
+												<input type="text" name="phone" class="text" />
 										</td>
 									</tr>
 									
@@ -108,7 +166,8 @@ function checkForm(){
 											地址:
 										</th>
 										<td>
-												<input type="text" name="address" class="text" maxlength="200">
+												<input type="text" name="addr" class="text" maxlength="200"/>
+												<span><s:fielderror fieldName="addr"/></span>
 										</td>
 									</tr>
 								<tr>
@@ -117,7 +176,7 @@ function checkForm(){
 									</th>
 									<td>
 										<span class="fieldSet">
-											<input type="text" id="captcha" name="captcha" class="text captcha" maxlength="4" autocomplete="off"><img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/image/captcha.jhtml" title="点击更换验证码">
+											<input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off"><img id="checkImg" class="captchaImage" src="${pageContext.request.contextPath}/checkImg.action" onclick="change()" title="点击更换验证码">
 										</span>
 									</td>
 								</tr>
@@ -168,7 +227,7 @@ function checkForm(){
 								<dt>已经拥有账号了？</dt>
 								<dd>
 									立即登录即可体验在线购物！
-									<a href="./会员登录.htm">立即登录</a>
+									<a href="${pageContext.request.contextPath}/user_loginPage.action">立即登录</a>
 								</dd>
 							</dl>
 						</div>
