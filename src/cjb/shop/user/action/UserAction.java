@@ -58,5 +58,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		}
 		return NONE;
 	}
+	
+	public String regist(){
+		
+		return NONE;
+	}
 
 }

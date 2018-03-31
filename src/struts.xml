@@ -2,31 +2,11 @@
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
-<!-- <struts>
-	<package name="shop" extends="struts-default" namespace="/">
-		class属性里面不写action全路径了，因为写，action对象创建两次
-			写spring配置的action的bean的id值
-		
-		<action name="index" class="indexAction">
-			<result name="index">/WEB-INF/jsp/index.jsp</result>
-		</action>
-		
-		<action name="user_*" class="userAction" method="{1}">
-			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
-		</action>
-	</package>
-	
-	<include file=""></include>
-</struts> -->
 <struts>
 
     <constant name="struts.devMode" value="false" />
 
 	<package name="shop" extends="struts-default" namespace="/">
-	
-		
-	
-		
 		<!-- 配置首页访问的Action -->
 		<action name="index" class="indexAction">
 			<result name="index">/WEB-INF/jsp/index.jsp</result>
@@ -34,6 +14,7 @@
 		
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
+			<result name="input">/WEB-INF/jsp/regist.jsp</result>
 		</action>
 	</package>
 </struts>
