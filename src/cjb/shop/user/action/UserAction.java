@@ -1,7 +1,11 @@
 package cjb.shop.user.action;
 
 import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.Properties;
 
+import javax.mail.MessagingException;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
@@ -11,14 +15,17 @@ import com.opensymphony.xwork2.ModelDriven;
 
 import cjb.shop.user.domain.User;
 import cjb.shop.user.service.UserService;
+import cn.itcast.mail.Mail;
+import cn.itcast.mail.MailUtils;
 /**
  * @author chenjibao
  *@date2018年3月30日下午8:42:14
  *@description:用户模块Aciton
  */
 public class UserAction extends ActionSupport implements ModelDriven<User>{
+	// 注入UserService
 	private UserService userService;
-	
+
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
@@ -33,7 +40,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	/**
 	 * 跳转到注册页面的方法
 	 */
-	public String registPage(){
+	public String registPage() {
 		return "registPage";
 	}
 	
@@ -58,8 +65,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		}
 		return NONE;
 	}
-	
-	public String regist(){
+	/**
+	 * 用户注册的方法
+	 * @return
+	 * @throws IOException 
+	 */
+	public String regist() {
+		userService.save(user);
 		
 		return NONE;
 	}

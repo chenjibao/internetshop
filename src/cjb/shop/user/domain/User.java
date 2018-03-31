@@ -1,5 +1,9 @@
 package cjb.shop.user.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 public class User {
 	private Integer uid;
 	private String username;
@@ -10,6 +14,8 @@ public class User {
 	private String address;
 	private Integer state;
 	private String code;
+	// 一个用户对应多个订单:
+//	private Set<Order> orders = new HashSet<Order>();
 	public Integer getUid() {
 		return uid;
 	}
@@ -64,20 +70,11 @@ public class User {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public User(Integer uid, String username, String password, String name, String email, String phone, String address,
-			Integer state, String code) {
-		super();
-		this.uid = uid;
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.address = address;
-		this.state = state;
-		this.code = code;
+/*	public Set<Order> getOrders() {
+		return orders;
 	}
-	public User() {
-	}
+	public void setOrders(Set<Order> orders) {
+		this.orders = orders;
+	}*/
 	
 }

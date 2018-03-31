@@ -25,4 +25,12 @@ public class UserDao extends HibernateDaoSupport{
 		}
 		return null;
 	}
+	/**
+	 * 向user表汇总插入一条记录
+	 * @param user
+	 */
+	// 注册用户存入数据库代码实现
+	public void save(User user) {
+		this.getHibernateTemplate().save(user);
+	}
 }

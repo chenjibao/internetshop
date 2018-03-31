@@ -84,7 +84,7 @@
 	<div class="span5">
 		<div class="logo">
 			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="筛宝商城">
 			</a>
 		</div>
 	</div>
@@ -166,7 +166,7 @@
 											地址:
 										</th>
 										<td>
-												<input type="text" name="addr" class="text" maxlength="200"/>
+												<input type="text" name="address" class="text" maxlength="200"/>
 												<span><s:fielderror fieldName="address"/></span>
 										</td>
 									</tr>
@@ -177,6 +177,7 @@
 									<td>
 										<span class="fieldSet">
 											<%-- <input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off"><img id="checkImg" class="captchaImage" src="${pageContext.request.contextPath}/checkImg.action" onclick="change()" title="点击更换验证码"> --%>
+											<input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off">
 										</span>
 									</td>
 								</tr>
