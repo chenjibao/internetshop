@@ -3,7 +3,6 @@ package cjb.shop.user.dao;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import cjb.shop.user.domain.User;
 
@@ -20,7 +19,7 @@ public class UserDao {
 		}
 		
 
-	public HibernateTemplate getHibernateTemplate() {
+	   public HibernateTemplate getHibernateTemplate() {
 			return hibernateTemplate;
 		}
 
@@ -46,5 +45,23 @@ public class UserDao {
 	public void save(User user) {
 		
 		hibernateTemplate.save(user);
+	}
+
+
+	public User findByCode(String code) {
+		String hql="from User where code=?";
+		List<User> list=(List<User>) hibernateTemplate.find(hql, code);
+		if(list!=null && list.size()>=0){
+			return list.get(0);
+		}
+		return null;
+	}
+
+	/**
+	 * 修改用户状态的方法
+	 * @param existUser
+	 */
+	public void update(User existUser) {
+		hibernateTemplate.update(existUser);
 	}
 }

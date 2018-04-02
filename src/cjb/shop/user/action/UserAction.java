@@ -47,6 +47,23 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	public String registPage() {
 		return "registPage";
 	}
+	/**
+	 * 用户激活的方法
+	 * @return
+	 */
+	public String active(){
+		//按照激活码查询用户
+		User existUser=userService.findByCode(user.getCode());
+		if(existUser==null){
+			this.addActionMessage("激活失败：激活码错误");
+		}else{
+			//激活成功，修改用户状态
+			existUser.setState(1);
+			userService.update(existUser);
+			this.addActionMessage("激活成功，您可以登录了");
+		}
+		return "msg";
+	}
 	
 	/**
 	 * AJAX进行异步校验用户名的执行方法
@@ -76,8 +93,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 */
 	public String regist() {
 		userService.save(user);
-		
-		return NONE;
+		this.addActionMessage("注册成功，请去邮箱激活");
+		return "msg";
 	}
 
 }

@@ -7,6 +7,12 @@
     <constant name="struts.devMode" value="false" />
 
 	<package name="shop" extends="struts-default" namespace="/">
+		
+		<global-results>
+			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+			<result name="login">/admin/index.jsp</result>
+		</global-results>
+		
 		<!-- 配置首页访问的Action -->
 		<action name="index" class="indexAction">
 			<result name="index">/WEB-INF/jsp/index.jsp</result>

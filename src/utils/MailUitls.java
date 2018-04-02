@@ -53,7 +53,7 @@ public class MailUitls {
 			// 设置标题
 			message.setSubject("来自筛宝商城激活邮件");
 			// 设置邮件正文:
-			message.setContent("<h1>筛宝商城激活邮件!点下面链接完成激活操作!</h1><h3><a href='http://localhost:8080/shop/user_active.action?code="+code+"'>http://localhost:8080/shop/user_active.action?code="+code+"</a></h3>", "text/html;charset=UTF-8");
+			message.setContent("<h1>筛宝商城激活邮件!点下面链接完成激活操作!</h1><h3><a href='http://localhost:8080/internetshop/user_active.action?code="+code+"'>http://localhost:8080/internetshop/user_active.action?code="+code+"</a></h3>", "text/html;charset=UTF-8");
 			// 3.发送邮件:
 			Transport.send(message);
 			System.out.println("邮件发送成功");

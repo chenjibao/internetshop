@@ -80,4 +80,15 @@ public class UserService {
 		}*/
 	}
 
+	public User findByCode(String code) {
+		return userDao.findByCode(code);
+	}
+	/**
+	 * 修改用户状态的方法
+	 * @param existUser
+	 */
+	public void update(User existUser) {
+		userDao.update(existUser);
+	}
+
 }
