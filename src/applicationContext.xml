@@ -22,7 +22,7 @@
 		<property name="password" value="cjb19950615"></property>
 	</bean>
 	<!-- sessionFactory创建交给spring管理 -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<!-- 配置Hibernate的其他的属性 -->
 		<property name="hibernateProperties">
@@ -44,18 +44,27 @@
 	</bean>
 	
 	<!-- 第一步 配置事务管理器 -->
-	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<!-- 第二步 开启事务注解 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<!-- 注入sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
 	
 	
 	<!-- Action的配置 ======================================================================-->
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="cjb.shop.index.action.IndexAction" scope="prototype">
+	</bean>
+	
+	<!-- 配置验证码Action -->
+	<bean id="checkImgAction" class="cjb.shop.user.action.CheckImgAction" scope="prototype">
+		
 	</bean>
 	
 	<!-- 用户模块的Action -->
@@ -77,7 +86,7 @@
 	
 	<!-- Dao的配置 ======================================================================-->
 	<bean id="userDao" class="cjb.shop.user.dao.UserDao">
-		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
 	

@@ -2,6 +2,7 @@ package cjb.shop.user.dao;
 
 import java.util.List;
 
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import cjb.shop.user.domain.User;
@@ -11,7 +12,19 @@ import cjb.shop.user.domain.User;
  *@date2018年3月30日下午9:44:37
  *@description:用户模块持久层类
  */
-public class UserDao extends HibernateDaoSupport{
+public class UserDao {
+	//得到hibernateTemplate对象
+		private HibernateTemplate hibernateTemplate;
+		public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+			this.hibernateTemplate = hibernateTemplate;
+		}
+		
+
+	public HibernateTemplate getHibernateTemplate() {
+			return hibernateTemplate;
+		}
+
+
 	/**
 	 * 按用户名查询是否有该用户
 	 * @param username
@@ -19,7 +32,7 @@ public class UserDao extends HibernateDaoSupport{
 	 */
 	public User findByUsername(String username){
 		String hql="from User where username=?";
-		List<User> list=(List<User>) this.getHibernateTemplate().find(hql, username);
+		List<User> list=(List<User>)hibernateTemplate.find(hql, username);
 		if(list!=null && list.size()>0){
 			return list.get(0);
 		}
@@ -31,6 +44,7 @@ public class UserDao extends HibernateDaoSupport{
 	 */
 	// 注册用户存入数据库代码实现
 	public void save(User user) {
-		this.getHibernateTemplate().save(user);
+		
+		hibernateTemplate.save(user);
 	}
 }

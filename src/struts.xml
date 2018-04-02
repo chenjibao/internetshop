@@ -16,6 +16,9 @@
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 			<result name="input">/WEB-INF/jsp/regist.jsp</result>
 		</action>
+		
+		<!-- 验证码Action -->
+		<action name="checkImg" class="checkImgAction"></action>
 	</package>
 </struts>
 

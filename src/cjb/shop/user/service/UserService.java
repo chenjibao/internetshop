@@ -1,18 +1,12 @@
 package cjb.shop.user.service;
 
 import java.io.IOException;
-import java.text.MessageFormat;
-import java.util.Properties;
-
-import javax.mail.MessagingException;
-import javax.mail.Session;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import cjb.shop.user.dao.UserDao;
 import cjb.shop.user.domain.User;
-import cn.itcast.mail.Mail;
-import cn.itcast.mail.MailUtils;
+import utils.MailUitls;
 import utils.UUIDUtils;
 
 /**
@@ -29,6 +23,10 @@ public class UserService {
 		this.userDao = userDao;
 	}
 	
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
 	// 按用户名查询用户的方法:
 	public User findByUsername(String username){
 		return userDao.findByUsername(username);
@@ -45,12 +43,14 @@ public class UserService {
 		String code = UUIDUtils.getUUID()+UUIDUtils.getUUID();
 		user.setCode(code);
 		userDao.save(user);
+		
+		MailUitls.sendMail(user.getEmail(), code);
 		/*
 		 * 发邮件
 		 * 准备配置文件！
 		 */
 		// 获取配置文件内容
-		Properties props = new Properties();
+		/*Properties props = new Properties();
 		try {
 			props.load(this.getClass().getClassLoader()
 					.getResourceAsStream("email_template.properties"));
@@ -77,7 +77,7 @@ public class UserService {
 			}
 		} catch (MessagingException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }

@@ -176,8 +176,7 @@
 									</th>
 									<td>
 										<span class="fieldSet">
-											<%-- <input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off"><img id="checkImg" class="captchaImage" src="${pageContext.request.contextPath}/checkImg.action" onclick="change()" title="点击更换验证码"> --%>
-											<input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off">
+											<input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off"><img id="checkImg" class="captchaImage" src="${pageContext.request.contextPath}/checkImg.action" onclick="change()" title="点击更换验证码">
 										</span>
 									</td>
 								</tr>

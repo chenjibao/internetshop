@@ -30,6 +30,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		this.userService = userService;
 	}
 
+	public UserService getUserService() {
+		return userService;
+	}
+
 	//模型驱动要使用的对象
 	private User user=new User();
 	@Override
