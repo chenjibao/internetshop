@@ -96,5 +96,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		this.addActionMessage("注册成功，请去邮箱激活");
 		return "msg";
 	}
+	/**
+	 * 跳转到登录页面
+	 * @return
+	 */
+	public String loginPage(){
+		return "loginPage";
+	}
 
 }

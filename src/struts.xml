@@ -18,9 +18,11 @@
 			<result name="index">/WEB-INF/jsp/index.jsp</result>
 		</action>
 		
+		<!--用户模块的action-->
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 			<result name="input">/WEB-INF/jsp/regist.jsp</result>
+			<result name="loginPage">/WEB-INF/jsp/login.jsp</result>
 		</action>
 		
 		<!-- 验证码Action -->
