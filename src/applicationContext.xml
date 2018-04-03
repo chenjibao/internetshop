@@ -40,6 +40,7 @@
 			<list>
 				<value>cjb/shop/user/domain/User.hbm.xml</value>
 				<value>cjb/shop/category/domain/Category.hbm.xml</value>
+				<value>cjb/shop/product/domain/Product.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -62,6 +63,7 @@
 	<!-- 首页访问的Action -->
 	<bean id="indexAction" class="cjb.shop.index.action.IndexAction" scope="prototype">
 		<property name="categoryService" ref="categoryService"/>
+		<property name="productService" ref="productService"/>
 	</bean>
 	
 	<!-- 配置验证码Action -->
@@ -79,6 +81,11 @@
 	<bean id="categoryAction" class="cjb.shop.category.action.CategoryAction" scope="prototype">
 	</bean>
 	
+	<bean id="productAction" class="cjb.shop.product.action.ProductAction" scope="prototype">
+		<property name="productService" ref="productService"/>
+	</bean>
+	
+	
 	
 	<!-- Service的配置 ======================================================================-->
 	<bean id="userService" class="cjb.shop.user.service.UserService">
@@ -89,6 +96,9 @@
 		<property name="categoryDao" ref="categoryDao"/>
 	</bean>
 	
+	<bean id="productService" class="cjb.shop.product.service.ProductService">
+		<property name="productDao" ref="productDao"/>
+	</bean>
 	
 	
 	
@@ -98,6 +108,10 @@
 	</bean>
 	
 	<bean id="categoryDao" class="cjb.shop.category.dao.CategoryDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="productDao" class="cjb.shop.product.dao.ProductDao">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
