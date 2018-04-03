@@ -105,6 +105,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		return "loginPage";
 	}
 	
+	/**
+	 * 用户登录的方法
+	 * @return
+	 */
 	public String login(){
 		User existUser=userService.login(user);
 		if(existUser==null){
@@ -116,6 +120,15 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 			ServletActionContext.getRequest().getSession().setAttribute("existUser", existUser);
 			return "loginSuccess";
 		}
+	}
+	/**
+	 * 用户退出的方法
+	 * @return
+	 */
+	public String quit(){
+		//销毁session
+		ServletActionContext.getRequest().getSession().invalidate();
+		return "quit";
 	}
 
 }
