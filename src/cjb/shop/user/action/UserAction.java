@@ -34,6 +34,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	public UserService getUserService() {
 		return userService;
 	}
+	
+	private String checkcode;
+
+	public void setCheckcode(String checkcode) {
+		this.checkcode = checkcode;
+	}
 
 	//模型驱动要使用的对象
 	private User user=new User();
@@ -93,6 +99,11 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 * @throws IOException 
 	 */
 	public String regist() {
+		String checkcode1=(String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
+		if(!checkcode.equalsIgnoreCase(checkcode1)){//验证码错误
+			this.addActionError("验证码错误");
+			return "checkcodeFail";
+		}
 		userService.save(user);
 		this.addActionMessage("注册成功，请去邮箱激活");
 		return "msg";
@@ -110,6 +121,11 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 * @return
 	 */
 	public String login(){
+		String checkcode1=(String) ServletActionContext.getRequest().getSession().getAttribute("checkcode");
+		if(!checkcode.equalsIgnoreCase(checkcode1)){//验证码错误
+			this.addActionError("验证码错误");
+			return "checkcodeFail1";
+		}
 		User existUser=userService.login(user);
 		if(existUser==null){
 			//登录失败
