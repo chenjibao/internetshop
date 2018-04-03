@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.mail.Session;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
@@ -102,6 +103,19 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 */
 	public String loginPage(){
 		return "loginPage";
+	}
+	
+	public String login(){
+		User existUser=userService.login(user);
+		if(existUser==null){
+			//登录失败
+			this.addActionError("登录失败:用户名或密码错误或用户未激活!");
+			return LOGIN;
+		}else{
+			//登录成功
+			ServletActionContext.getRequest().getSession().setAttribute("existUser", existUser);
+			return "loginSuccess";
+		}
 	}
 
 }
