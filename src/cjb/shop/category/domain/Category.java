@@ -1,0 +1,24 @@
+package cjb.shop.category.domain;
+/**
+ * @author chenjibao
+ *@date2018年4月3日下午7:28:21
+ *@description:一级分类的实体类对象
+ */
+public class Category {
+	private Integer cid;
+	private String cname;
+	public Integer getCid() {
+		return cid;
+	}
+	public void setCid(Integer cid) {
+		this.cid = cid;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	
+
+}
