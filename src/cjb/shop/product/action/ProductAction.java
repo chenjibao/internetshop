@@ -33,6 +33,11 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	public void setCid(Integer cid) {
 		this.cid = cid;
 	}
+	
+	public Integer getCid() {
+		return cid;
+	}
+
 	//注入一级分类的service
 	private CategoryService categoryService;
 
