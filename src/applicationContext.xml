@@ -87,6 +87,11 @@
 		<property name="productService" ref="productService"/>
 	</bean>
 	
+	<!-- 购物车的Action-->
+	<bean id="cartAction" class="cjb.shop.cart.action.CartAction" scope="prototype">
+	
+	</bean>
+	
 	
 	
 	<!-- Service的配置 ======================================================================-->

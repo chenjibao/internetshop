@@ -7,7 +7,11 @@
 <title>筛宝商城</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/css/product.css" rel="stylesheet" type="text/css">
-
+<script>
+	function saveCart(){
+		document.getElementById("cartForm").submit();
+	}
+</script>
 
 </head>
 <body>
