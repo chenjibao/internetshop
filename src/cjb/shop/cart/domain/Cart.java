@@ -1,5 +1,6 @@
 package cjb.shop.cart.domain;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,7 +12,7 @@ import cjb.shop.cart.domain.CartItem;
  *@date2018年4月6日下午7:15:23
  *@description:购物车类
  */
-public class Cart {
+public class Cart implements Serializable{
 	//购物项集合Map：key是商品的id，value是购物项CartItem
 	private Map<Integer,CartItem> map=new LinkedHashMap<Integer, CartItem>();
 	//总计

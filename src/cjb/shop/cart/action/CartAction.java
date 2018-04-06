@@ -60,6 +60,11 @@ public class CartAction extends ActionSupport {
 		}
 		return cart;
 	}
+	public String removeCart(){
+		Cart cart=getCart();
+		cart.removeCartItem(pid);
+		return "removeCart";
+	}
 	
 
 }
