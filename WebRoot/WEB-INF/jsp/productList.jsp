@@ -40,7 +40,7 @@
 					<dl>
 						<dt>
 							<a
-								href="${pageContext.request.contextPath}/image/蔬菜 - Powered By Mango Team.htm"><s:property
+								href="${pageContext.request.contextPath}/product_findByCid.action?cid=<s:property value="#c.cid"/>&page=1"><s:property
 									value="#c.cname" /></a>
 						</dt>
 						<s:iterator var="cs" value="#c.categorySeconds">
@@ -61,7 +61,7 @@
 				<div id="result" class="result table clearfix">
 					<ul>
 					<s:iterator var="p" value="pageBean.List">
-						<li><a href="./京华商城分页面.htm"> <img
+						<li><a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#p.pid"/>"> <img
 								src="${pageContext.request.contextPath}/<s:property value="#p.image"/>"
 								width="170" height="170" style="display: inline-block;"> <span
 								style='color:green'><s:property value="#p.pname"/></span> <span class="price">
