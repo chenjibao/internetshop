@@ -16,19 +16,32 @@ import cjb.shop.utils.PageBean;
 public class ProductAction extends ActionSupport implements ModelDriven<Product>{
 	//注入ProductService
 	private ProductService productService;
+	//注入cid
+	private Integer cid;
+	//注入一级分类的service
+	private CategoryService categoryService;
+	//注入当前页数
+	private int page;
+	private Integer csid;
+	public Integer getCsid() {
+		return csid;
+	}
+
+	public void setCsid(Integer csid) {
+		this.csid = csid;
+	}
+
+	//用于接受数据的模型
+	private Product product=new Product();
 
 	public void setProductService(ProductService productService) {
 		this.productService = productService;
 	}
 	
-	//用于接受数据的模型
-	private Product product=new Product();
 	@Override
 	public Product getModel() {
 		return product;
 	}
-	//注入cid
-	private Integer cid;
 	
 	public void setCid(Integer cid) {
 		this.cid = cid;
@@ -38,15 +51,11 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		return cid;
 	}
 
-	//注入一级分类的service
-	private CategoryService categoryService;
 
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
 	
-	//注入当前页数
-	private int page;
 	
 	public void setPage(int page) {
 		this.page = page;
@@ -72,6 +81,18 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 		//将pageBean存入到值栈中
 		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
 		return "findByCid";
+	}
+	
+	/**
+	 * 根据二级分类id查询商品
+	 * @return
+	 */
+	public String findByCsid(){
+		//根据二级分类id查询
+		PageBean<Product> pageBean=productService.findByPageCsid(csid,page);
+		//将pageBean存入到值栈中
+		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
+		return "findByCsid";
 	}
 
 }

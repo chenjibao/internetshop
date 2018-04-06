@@ -70,7 +70,7 @@ public class ProductDao {
 ;		return 0;
 	}
 	/**
-	 * 根据分类id查询商品的集合
+	 * 根据一级分类id查询商品的集合
 	 * @param cid
 	 * @param begin
 	 * @param limit
@@ -87,6 +87,35 @@ public class ProductDao {
 			return list;
 		}
 		return null;
+	}
+	/**
+	 * 根据二级分类去查询商品个数
+	 * @param csid
+	 * @return
+	 */
+	public int findTotalCountByCsid(Integer csid) {
+		String hql="select count(*) from Product p where p.categorySecond.csid=?";
+		List<Long> list=(List<Long>) hibernateTemplate.find(hql, csid);
+		if(list!=null && list.size()>0){
+			return list.get(0).intValue();
+		}
+;		return 0;
+	}
+	/**
+	 * 根据二级分类去查询商品集合
+	 * @param csid
+	 * @param begin
+	 * @param limit
+	 * @return
+	 */
+	public List<Product> findByPageCsid(Integer csid, int begin, int limit) {
+				//多表查询
+				String hql="select p from Product p join p.categorySecond cs  where cs.csid=?";
+				List<Product> list=(List<Product>) hibernateTemplate.execute((HibernateCallback<Product>) new PageHibernateCallback(hql, new Object[]{csid}, begin, limit));
+				if(list!=null && list.size()>0){
+					return list;
+				}
+				return null;
 	}
 	
 	
