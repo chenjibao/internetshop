@@ -49,6 +49,10 @@ public class CartAction extends ActionSupport {
 		cart.clearCart();
 		return "clearCart";
 	}
+	//我的购物车
+	public String myCart(){
+		return "myCart";
+	}
 	//获取购物车
 	private Cart getCart() {
 		Cart cart = (Cart) ServletActionContext.getRequest().getSession()
