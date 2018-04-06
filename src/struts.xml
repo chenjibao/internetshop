@@ -40,6 +40,7 @@
 		<!--购物车模块的action-->
 		<action name="cart_*" class="cartAction" method="{1}">
 			<result name="addCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
 		</action>
 		
 		<!-- 验证码Action -->

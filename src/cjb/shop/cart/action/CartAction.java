@@ -43,6 +43,12 @@ public class CartAction extends ActionSupport {
 		cart.addCartItem(cartItem);
 		return "addCart";
 	}
+	//清空购物车
+	public String clearCart(){
+		Cart cart=getCart();
+		cart.clearCart();
+		return "clearCart";
+	}
 	//获取购物车
 	private Cart getCart() {
 		Cart cart = (Cart) ServletActionContext.getRequest().getSession()
@@ -54,5 +60,6 @@ public class CartAction extends ActionSupport {
 		}
 		return cart;
 	}
+	
 
 }
