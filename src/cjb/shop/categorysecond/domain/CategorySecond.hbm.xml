@@ -8,17 +8,12 @@
 		name属性：实体类全路径
 		table属性：数据库表名称
 	-->
-	<class name="cjb.shop.category.domain.Category" table="category">
-		<id name="cid" column="cid">
+	<class name="cjb.shop.categorysecond.domain.CategorySecond" table="categorysecond">
+		<id name="csid" column="csid">
 			<generator class="native"></generator>
 		</id>
-		<property name="cname" column="cname"></property>
-		
-		<!--配置二级分类的集合  -->
-		<set name="categorySeconds" lazy="false" order-by="csid">
-			<key column="cid"></key>
-			<one-to-many class="cjb.shop.categorysecond.domain.CategorySecond"/>
-		</set>
+		<property name="csname" column="csname"></property>
+		<many-to-one name="category" class="cjb.shop.category.domain.Category" column="cid"></many-to-one>
 	</class>
 </hibernate-mapping>
 

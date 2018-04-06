@@ -1,4 +1,10 @@
 package cjb.shop.category.domain;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import cjb.shop.categorysecond.domain.CategorySecond;
+
 /**
  * @author chenjibao
  *@date2018年4月3日下午7:28:21
@@ -7,6 +13,14 @@ package cjb.shop.category.domain;
 public class Category {
 	private Integer cid;
 	private String cname;
+	private Set<CategorySecond> categorySeconds=new HashSet<CategorySecond>();
+	
+	public Set<CategorySecond> getCategorySeconds() {
+		return categorySeconds;
+	}
+	public void setCategorySeconds(Set<CategorySecond> categorySeconds) {
+		this.categorySeconds = categorySeconds;
+	}
 	public Integer getCid() {
 		return cid;
 	}

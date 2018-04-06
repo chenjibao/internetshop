@@ -22,7 +22,7 @@ public class CategoryService {
 	}
 	
 	/**
-	 * 查询所有以及分类的方法
+	 * 查询所有一级分类的方法
 	 * @return
 	 */
 	public List<Category> findAll() {

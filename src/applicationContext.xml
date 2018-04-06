@@ -41,6 +41,7 @@
 				<value>cjb/shop/user/domain/User.hbm.xml</value>
 				<value>cjb/shop/category/domain/Category.hbm.xml</value>
 				<value>cjb/shop/product/domain/Product.hbm.xml</value>
+				<value>cjb/shop/categorysecond/domain/CategorySecond.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

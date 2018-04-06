@@ -46,7 +46,7 @@
 					</li>
 					<s:iterator var="category" value="#session.cList">
 						<li>
-							<a href="./蔬菜分类.htm"><s:property value="#category.cname"/></a>
+							<a href="${pageContext.request.contextPath}/product_findByCid.action?cid=<s:property value="#category.cid"/>"><s:property value="#category.cname"/></a>
 						</li>
 					</s:iterator>
 		</ul>
