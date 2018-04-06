@@ -81,6 +81,7 @@
 	<bean id="categoryAction" class="cjb.shop.category.action.CategoryAction" scope="prototype">
 	</bean>
 	
+	<!-- 商品的Action-->
 	<bean id="productAction" class="cjb.shop.product.action.ProductAction" scope="prototype">
 		<property name="productService" ref="productService"/>
 	</bean>

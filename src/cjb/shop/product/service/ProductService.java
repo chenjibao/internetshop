@@ -33,6 +33,14 @@ public class ProductService {
 	public List<Product> findNew() {
 		return productDao.findNew();
 	}
+	/**
+	 * 根据id查询商品
+	 * @param pid
+	 * @return
+	 */
+	public Product findByPid(Integer pid) {
+		return productDao.findByPid(pid);
+	}
 	
 
 }

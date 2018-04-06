@@ -46,6 +46,14 @@ public class ProductDao {
 		List<Product> list=(List<Product>) hibernateTemplate.findByCriteria(criteria, 0, 10);
 		return list;
 	}
+	/**
+	 * 根据商品的id查询商品
+	 * @param pid
+	 * @return
+	 */
+	public Product findByPid(Integer pid) {
+		return hibernateTemplate.get(Product.class, pid);
+	}
 	
 
 }

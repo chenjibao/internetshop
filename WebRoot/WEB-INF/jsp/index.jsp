@@ -55,7 +55,7 @@
 </div> -->
 				<ul class="tabContent" style="display: block;">
 					<s:iterator var="product" value="hList">
-						<li><a target="_blank"><img
+						<li><a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#product.pid"/>" target="_blank"><img
 								src="${pageContext.request.contextPath}/<s:property value="#product.image"/>"
 								data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg"
 								style="display: block;"></a></li>
@@ -149,7 +149,7 @@
 				<ul class="tabContent" style="display: block;">
 					<s:iterator var="product" value="nList">
 					<li>	
-						<a target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#product.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>
+						<a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#product.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#product.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>
 					</li>
 					</s:iterator>
 				</ul>
