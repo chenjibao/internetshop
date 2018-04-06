@@ -35,6 +35,11 @@ public class IndexAction extends ActionSupport {
 		List<Product> hList=productService.findHot();
 		//保存到值栈中
 		ActionContext.getContext().getValueStack().set("hList", hList);
+		
+		//查询最新商品
+		List<Product> nList=productService.findNew();
+		//保存到值栈中
+		ActionContext.getContext().getValueStack().set("nList", nList);
 		return "index";
 	}
 }

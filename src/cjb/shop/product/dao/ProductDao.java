@@ -33,6 +33,19 @@ public class ProductDao {
 		List<Product> list=(List<Product>) hibernateTemplate.findByCriteria(criteria, 0, 20);
 		return list;
 	}
+	/**
+	 * 首页最新商品查询
+	 * @return
+	 */
+	public List<Product> findNew() {
+		//使用离线查询
+		DetachedCriteria criteria=DetachedCriteria.forClass(Product.class);
+		//按日期降序排序
+		criteria.addOrder(Order.desc("pdate"));
+		//执行查询，显示最新商品10件
+		List<Product> list=(List<Product>) hibernateTemplate.findByCriteria(criteria, 0, 10);
+		return list;
+	}
 	
 
 }

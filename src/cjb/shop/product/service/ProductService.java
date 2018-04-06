@@ -26,6 +26,13 @@ public class ProductService {
 	public List<Product> findHot() {
 		return productDao.findHot();
 	}
+	/**
+	 * 首页最新商品查询
+	 * @return
+	 */
+	public List<Product> findNew() {
+		return productDao.findNew();
+	}
 	
 
 }
