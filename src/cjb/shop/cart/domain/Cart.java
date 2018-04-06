@@ -1,5 +1,6 @@
 package cjb.shop.cart.domain;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,6 +16,13 @@ public class Cart {
 	private Map<Integer,CartItem> map=new LinkedHashMap<Integer, CartItem>();
 	//总计
 	private double total;
+	
+	public Collection<CartItem> getCartItems(){
+		return map.values();
+	}
+	public double getTotal() {
+		return total;
+	}
 	/*
 	 * 购物车功能
 	 */
@@ -36,7 +44,7 @@ public class Cart {
 					// 存在
 					CartItem _cartItem = map.get(pid);// 获得购物车中原来的购物项
 					_cartItem.setCount(_cartItem.getCount()+cartItem.getCount());
-					map.put(pid, _cartItem);
+//					map.put(pid, _cartItem);
 				}else{
 					// 不存在
 					map.put(pid, cartItem);

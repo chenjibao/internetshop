@@ -89,7 +89,7 @@
 	
 	<!-- 购物车的Action-->
 	<bean id="cartAction" class="cjb.shop.cart.action.CartAction" scope="prototype">
-	
+		<property name="productService" ref="productService"/>
 	</bean>
 	
 	
