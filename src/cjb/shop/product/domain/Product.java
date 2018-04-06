@@ -1,6 +1,8 @@
 package cjb.shop.product.domain;
 
 import java.util.Date;
+
+import cjb.shop.categorysecond.domain.CategorySecond;
 /**
  * @author chenjibao
  *@date2018年4月3日下午9:09:06
@@ -24,6 +26,14 @@ public class Product {
 	private String pdesc;
 	private Integer is_hot;
 	private Date pdate;
+	private CategorySecond categorySecond;//商品所属的二级分类
+	
+	public CategorySecond getCategorySecond() {
+		return categorySecond;
+	}
+	public void setCategorySecond(CategorySecond categorySecond) {
+		this.categorySecond = categorySecond;
+	}
 	public Integer getPid() {
 		return pid;
 	}

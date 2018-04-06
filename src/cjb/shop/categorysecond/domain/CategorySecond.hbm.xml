@@ -13,7 +13,13 @@
 			<generator class="native"></generator>
 		</id>
 		<property name="csname" column="csname"></property>
-		<many-to-one name="category" class="cjb.shop.category.domain.Category" column="cid"></many-to-one>
+		<!--二级分类与一级分类的关联-->
+		<many-to-one name="category" class="cjb.shop.category.domain.Category" column="cid" lazy="false"></many-to-one>
+		<!--二级分类与商品的关联-->
+		<set name="products" lazy="false" order-by="pid">
+			<key column="csid"></key>
+			<one-to-many class="cjb.shop.product.domain.Product"/>
+		</set>
 	</class>
 </hibernate-mapping>
 

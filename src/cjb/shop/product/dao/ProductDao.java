@@ -5,9 +5,11 @@ import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import cjb.shop.product.domain.Product;
+import utils.PageHibernateCallback;
 /**
  * @author chenjibao
  *@date2018年4月3日下午9:08:21
@@ -54,6 +56,39 @@ public class ProductDao {
 	public Product findByPid(Integer pid) {
 		return hibernateTemplate.get(Product.class, pid);
 	}
+	/**
+	 * 根据分类的id查询商品的个数
+	 * @param cid
+	 * @return
+	 */
+	public int findTotalCountByCid(Integer cid) {
+		String hql="select count(*) from Product p where p.categorySecond.category.cid=?";
+		List<Long> list=(List<Long>) hibernateTemplate.find(hql, cid);
+		if(list!=null && list.size()>0){
+			return list.get(0).intValue();
+		}
+;		return 0;
+	}
+	/**
+	 * 根据分类id查询商品的集合
+	 * @param cid
+	 * @param begin
+	 * @param limit
+	 * @return
+	 */
+	public List<Product> findByPageCid(Integer cid, int begin, int limit) {
+		//多表查询
+		//普通sql:select p.* from category c, categorysecond cs, prouct p where c.cid=cs.cid and cs.csid=p.csid and c.cid=?;
+		//hql(1):select p from Category c,CategorySecond cs,Product p where c.cid=cs.category.cid and cs.csid=p.categorySecond.csid  and c.cid=?;
+		//hql(2):select p from Product p join p.categorySecond cs join cs.category c where c.cid=?;
+		String hql="select p from Product p join p.categorySecond cs join cs.category c where c.cid=?";
+		List<Product> list=(List<Product>) hibernateTemplate.execute((HibernateCallback<Product>) new PageHibernateCallback(hql, new Object[]{cid}, begin, limit));
+		if(list!=null && list.size()>0){
+			return list;
+		}
+		return null;
+	}
+	
 	
 
 }
