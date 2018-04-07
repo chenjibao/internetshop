@@ -42,6 +42,8 @@
 				<value>cjb/shop/category/domain/Category.hbm.xml</value>
 				<value>cjb/shop/product/domain/Product.hbm.xml</value>
 				<value>cjb/shop/categorysecond/domain/CategorySecond.hbm.xml</value>
+				<value>cjb/shop/order/domain/Order.hbm.xml</value>
+				<value>cjb/shop/order/domain/OrderItem.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -92,6 +94,11 @@
 		<property name="productService" ref="productService"/>
 	</bean>
 	
+	<!-- 订单的Action-->
+	<bean id="orderAction" class="cjb.shop.order.domain.Order" scope="prototype">
+		<property name="orderService" ref="orderService"/>
+	</bean>
+	
 	
 	
 	<!-- Service的配置 ======================================================================-->
@@ -107,6 +114,9 @@
 		<property name="productDao" ref="productDao"/>
 	</bean>
 	
+	<bean id="orderService" class="cjb.shop.order.service.OrderService">
+		<property name="orderDao" ref="orderDao"/>
+	</bean>
 	
 	
 	<!-- Dao的配置 ======================================================================-->
@@ -119,6 +129,10 @@
 	</bean>
 	
 	<bean id="productDao" class="cjb.shop.product.dao.ProductDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+	
+	<bean id="orderDao" class="cjb.shop.order.dao.OrderDao">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
