@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -14,6 +15,7 @@ import cjb.shop.order.domain.Order;
 import cjb.shop.order.domain.OrderItem;
 import cjb.shop.order.service.OrderService;
 import cjb.shop.user.domain.User;
+import cjb.shop.utils.PageBean;
 /**
  * @author chenjibao
  *@date2018年4月7日上午9:50:06
@@ -24,7 +26,13 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 	private Order order=new Order();
 	//注入业务层service
 	private OrderService orderService;
+	//注入当前页数
+	private int page;
 	
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 	public void setOrderService(OrderService orderService) {
 		this.orderService = orderService;
 	}
@@ -79,5 +87,15 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 
 				return "saveOrder";
 	}
-	
+
+	//我的订单的查询
+	public String findByUid(){
+		User user=(User)ServletActionContext.getRequest().getSession().getAttribute("existUser");
+		//调用service得到PageBean
+		PageBean<Order> pageBean=orderService.findByPageUid(user.getUid(),page);
+		//将分页数据保存到值栈中
+		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
+		return "findByUidSuccess";
+		
+	}
 }

@@ -18,7 +18,7 @@
 		
 		<many-to-one name="product" lazy="false" class="cjb.shop.product.domain.Product" column="pid"></many-to-one>
 		
-		<many-to-one name="order" class="cjb.shop.order.domain.Order" column="oid"/>
+		<many-to-one name="order"  class="cjb.shop.order.domain.Order" column="oid"/>
 	</class>
 </hibernate-mapping>
 

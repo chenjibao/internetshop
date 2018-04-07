@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-<title>订单页面</title>
+<title>我的订单</title>
 <link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/css/cart.css" rel="stylesheet" type="text/css"/>
 
@@ -38,16 +38,36 @@
 				<ul>
 					
 					<li  class="current"></li>
-					<li  >生成订单成功</li>
+					<li  >我的订单一览</li>
 				</ul>
 			</div>
 	
 		
 				<table>
 					<tbody>
+					<s:iterator var="order" value="pageBean.list">
+					
 					<tr>
-						<th colspan="5">订单编号:<s:property value="model.oid"/>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						<th colspan="5">订单编号:<s:property value="#order.oid" />&nbsp;&nbsp;&nbsp;&nbsp;
+							订单金额:<font color="red"><s:property value="#order.total" /></font>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<font color="red">
+								<s:if test="#order.state == 1">
+									<a href="${ pageContext.request.contextPath }/order_findByOid.action?oid=<s:property value="#order.oid" />">付款</a>
+								</s:if>
+								<s:if test="#order.state == 2">
+									已付款
+								</s:if>
+								<s:if test="#order.state == 3">
+									<a href="${ pageContext.request.contextPath }/order_updateState.action?oid=<s:property value="#order.oid" />">确认收货</a>
+								</s:if>
+								<s:if test="#order.state == 4">
+									交易成功
+								</s:if>
+							</font>
+							</th>
 					</tr>
+					
 					<tr>
 						<th>图片</th>
 						<th>商品</th>
@@ -55,7 +75,7 @@
 						<th>数量</th>
 						<th>小计</th>
 					</tr>
-					<s:iterator var="orderItem" value="model.orderItems">
+					<s:iterator var="orderItem" value="#order.orderItems">
 						<tr>
 							<td width="60">
 								<input type="hidden" name="id" value="22"/>
@@ -75,55 +95,41 @@
 							</td>
 						</tr>
 					</s:iterator>
+					</s:iterator>
+					<tr>
+						<th colspan="5">
+						<div class="pagination">
+							<span>第<s:property value="pageBean.page" />/<s:property
+								value="pageBean.totalPage" />页 </span>
+								<s:if test="pageBean.page != 1">
+								<a
+									href="${ pageContext.request.contextPath }/order_findByUid.action?page=1"
+									class="firstPage">&nbsp;</a>
+								<a
+									href="${ pageContext.request.contextPath }/order_findByUid.action?page=<s:property value="pageBean.page-1"/>"
+									class="previousPage">&nbsp;</a>
+							</s:if> <s:iterator var="i" begin="1" end="pageBean.totalPage">
+								<s:if test="pageBean.page != #i">
+									<a
+										href="${ pageContext.request.contextPath }/order_findByUid.action?page=<s:property value="#i"/>"><s:property
+											value="#i" />
+									</a>
+								</s:if>
+								<s:else>
+									<span class="currentPage"><s:property value="#i" />
+									</span>
+								</s:else>
+							</s:iterator> <s:if test="pageBean.page != pageBean.totalPage">
+								<a class="nextPage"
+									href="${ pageContext.request.contextPath }/order_findByUid.action?page=<s:property value="pageBean.page+1"/>">&nbsp;</a>
+								<a class="lastPage"
+									href="${ pageContext.request.contextPath }/order_findByUid.action?page=<s:property value="pageBean.totalPage"/>">&nbsp;</a>
+							</s:if>
+							</div>
+							</th>
+					</tr>
 				</tbody>
 			</table>
-				<dl id="giftItems" class="hidden" style="display: none;">
-				</dl>
-				<div class="total">
-					<em id="promotion"></em>
-					商品金额: <strong id="effectivePrice">￥<s:property value="model.total"/>元</strong>
-				</div>
-			<form id="orderForm" action="./order_payOrder.action" method="post">
-				<input type="hidden" name="order.oid" value=""/>
-				<div class="span24">
-					<p>
-							收货地址：<input name="order.user.address" type="text" value="<s:property value="model.user.address"/>" style="width:350px" />
-								<br />
-							收货人&nbsp;&nbsp;&nbsp;：<input name="order.user.username" type="text" value="<s:property value="model.user.name"/>" style="width:150px" />
-								<br /> 
-							联系方式：<input name="order.user.phone" type="text"value="<s:property value="model.user.phone"/>" style="width:150px" />
-
-						</p>
-						<hr />
-						<p>
-							选择银行：<br/>
-							<input type="radio" name="pd_FrpId" value="ICBC-NET-B2C" checked="checked"/>工商银行
-							<img src="${pageContext.request.contextPath}/bank_img/icbc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="pd_FrpId" value="BOC-NET-B2C"/>中国银行
-							<img src="${pageContext.request.contextPath}/bank_img/bc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="pd_FrpId" value="ABC-NET-B2C"/>农业银行
-							<img src="${pageContext.request.contextPath}/bank_img/abc.bmp" align="middle"/>
-							<br/>
-							<input type="radio" name="pd_FrpId" value="BOCO-NET-B2C"/>交通银行
-							<img src="${pageContext.request.contextPath}/bank_img/bcc.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="pd_FrpId" value="PINGANBANK-NET"/>平安银行
-							<img src="${pageContext.request.contextPath}/bank_img/pingan.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="pd_FrpId" value="CCB-NET-B2C"/>建设银行
-							<img src="${pageContext.request.contextPath}/bank_img/ccb.bmp" align="middle"/>
-							<br/>
-							<input type="radio" name="pd_FrpId" value="CEB-NET-B2C"/>光大银行
-							<img src="${pageContext.request.contextPath}/bank_img/guangda.bmp" align="middle"/>&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="radio" name="pd_FrpId" value="CMBCHINA-NET-B2C"/>招商银行
-							<img src="${pageContext.request.contextPath}/bank_img/cmb.bmp" align="middle"/>
-						</p>
-						<hr />
-						<p style="text-align:right">
-							<a href="javascript:document.getElementById('orderForm').submit();">
-								<img src="${pageContext.request.contextPath}/images/finalbutton.gif" width="204" height="51" border="0" />
-							</a>
-						</p>
-				</div>
-			</form>
 		</div>
 		
 	</div>
