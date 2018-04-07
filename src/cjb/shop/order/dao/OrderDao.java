@@ -35,5 +35,9 @@ public class OrderDao {
 		public Order findByOid(Integer oid) {
 			return hibernateTemplate.get(Order.class, oid);
 		}
+		//修改订单
+		public void update(Order currOrder) {
+			hibernateTemplate.update(currOrder);
+		}
 
 }

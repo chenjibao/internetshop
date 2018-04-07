@@ -58,6 +58,10 @@ public class OrderService {
 	public Order findByOid(Integer oid) {
 		return orderDao.findByOid(oid);
 	}
+	//修改订单
+	public void update(Order currOrder) {
+		orderDao.update(currOrder);
+	}
 
 
 }
