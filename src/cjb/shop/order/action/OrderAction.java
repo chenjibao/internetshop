@@ -25,5 +25,9 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 	public Order getModel() {
 		return order;
 	}
+	//生成订单的方法
+	public String save(){
+		return "saveSuccess";
+	}
 	
 }

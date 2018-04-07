@@ -95,7 +95,7 @@
 	</bean>
 	
 	<!-- 订单的Action-->
-	<bean id="orderAction" class="cjb.shop.order.domain.Order" scope="prototype">
+	<bean id="orderAction" class="cjb.shop.order.action.OrderAction" scope="prototype">
 		<property name="orderService" ref="orderService"/>
 	</bean>
 	
