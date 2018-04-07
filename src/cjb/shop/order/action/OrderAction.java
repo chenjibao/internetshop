@@ -98,4 +98,9 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 		return "findByUidSuccess";
 		
 	}
+	//根据订单id查询订单
+	public String findByOid(){
+		order=orderService.findByOid(order.getOid());
+		return "findByOidSuccess";
+	}
 }

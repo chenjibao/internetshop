@@ -31,5 +31,9 @@ public class OrderDao {
 			List<Order> list= hibernateTemplate.execute(new PageHibernateCallback<Order>(hql, new Object[]{uid}, begin, limit)); 
 			return list;
 		}
+		//根据订单id查询订单
+		public Order findByOid(Integer oid) {
+			return hibernateTemplate.get(Order.class, oid);
+		}
 
 }

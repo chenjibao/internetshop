@@ -54,6 +54,10 @@ public class OrderService {
 		pageBean.setList(list);
 		return pageBean;
 	}
-	
+	//订单模块业务层根据订单id查询订单
+	public Order findByOid(Integer oid) {
+		return orderDao.findByOid(oid);
+	}
+
 
 }
