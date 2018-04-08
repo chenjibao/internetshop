@@ -1,5 +1,7 @@
 package cjb.shop.adminuser.action;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -25,4 +27,16 @@ public class AdminUserAction extends ActionSupport implements ModelDriven<AdminU
 		return adminUser;
 	}
 
+	public String login(){
+		AdminUser existAdminUser=adminUserService.login(adminUser);
+		if(existAdminUser==null){
+			//登录失败
+			this.addActionError("用户名或密码错误");
+			return "loginFail";
+		}else{
+			//登录成功
+			ServletActionContext.getRequest().getSession().setAttribute("existAdminUser", existAdminUser);
+			return "loginSuccess";
+		}
+	}
 }

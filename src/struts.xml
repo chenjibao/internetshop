@@ -52,6 +52,12 @@
 			<result name="findByOidSuccess">/WEB-INF/jsp/order.jsp</result>
 		</action>
 		
+		<!--后台admin模块的action-->
+		<action name="adminUser_*" class="adminUserAction" method="{1}">
+			<result name="loginFail">/admin/index.jsp</result>
+			<result name="loginSuccess">/admin/home.jsp</result>
+		</action>
+		
 		<!-- 验证码Action -->
 		<action name="checkImg" class="checkImgAction"></action>
 		
