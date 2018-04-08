@@ -1,9 +1,13 @@
 package cjb.shop.product.adminaction;
 
+import java.util.List;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import cjb.shop.categorysecond.domain.CategorySecond;
+import cjb.shop.categorysecond.service.CategorySecondService;
 import cjb.shop.product.domain.Product;
 import cjb.shop.product.service.ProductService;
 import cjb.shop.utils.PageBean;
@@ -19,7 +23,13 @@ public class AdminProductAction extends ActionSupport implements ModelDriven<Pro
 	private ProductService productService;
 	//注入page
 	private Integer page;
+	//注入二级分类的service
+	private CategorySecondService categorySecondService;
 	
+	public void setCategorySecondService(CategorySecondService categorySecondService) {
+		this.categorySecondService = categorySecondService;
+	}
+
 	public void setPage(Integer page) {
 		this.page = page;
 	}
@@ -41,6 +51,16 @@ public class AdminProductAction extends ActionSupport implements ModelDriven<Pro
 		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
 		//页面跳转
 		return "findAll";
+	}
+	
+	//跳转到添加页面的方法
+	public String addPage(){
+		//查询所有的二级分类
+		List<CategorySecond> csList=categorySecondService.findAll();
+		//商品的集合保存到值栈中
+		ActionContext.getContext().getValueStack().set("csList", csList);
+		//页面跳转
+		return "addPageSuccess";
 	}
 
 }

@@ -54,5 +54,10 @@ public class CategorySecondDao {
 			public void update(CategorySecond categorySecond) {
 				hibernateTemplate.update(categorySecond);
 			}
+			//dao层查询所有二级分类的方法
+			public List<CategorySecond> findAll() {
+				String hql="from CategorySecond";
+				return (List<CategorySecond>) hibernateTemplate.find(hql);
+			}
 
 }

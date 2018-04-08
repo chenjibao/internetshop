@@ -119,6 +119,7 @@
 	<!-- 后台管理商品的Action-->
 	<bean id="adminProductAction" class="cjb.shop.product.adminaction.AdminProductAction" scope="prototype">
 		<property name="productService" ref="productService"/>
+		<property name="categorySecondService" ref="categorySecondService"/>
 	</bean>
 	
 	<!-- Service的配置 ======================================================================-->

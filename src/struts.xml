@@ -80,6 +80,7 @@
 		<!--后台管理商品的action-->
 		<action name="adminProduct_*" class="adminProductAction" method="{1}">
 			<result name="findAll">/admin/product/list.jsp</result>
+			<result name="addPageSuccess">/admin/product/add.jsp</result>
 		</action>
 		
 		
