@@ -135,6 +135,10 @@ public class ProductDao {
 		}
 		return null;
 	}
+	//dao层将商品保存到数据库中
+	public void save(Product product) {
+		hibernateTemplate.save(product);
+	}
 	
 	
 
