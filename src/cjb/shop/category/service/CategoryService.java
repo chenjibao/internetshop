@@ -41,6 +41,10 @@ public class CategoryService {
 	public void delete(Category category) {
 		categoryDao.delete(category);
 	}
+	//业务层更新一级分类的信息
+	public void update(Category category) {
+		categoryDao.update(category);
+	}
 	
 
 }

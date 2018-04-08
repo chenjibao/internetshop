@@ -48,5 +48,15 @@ public class AdminCategoryAction extends ActionSupport implements ModelDriven<Ca
 		//页面跳转
 		return "deleteSuccess";
 	}
+	//跳转到编辑页面
+	public String edit(){
+		category=categoryService.findByCid(category.getCid());
+		return "editSuccess";
+	}
+	//更新一级分类的信息
+	public String update(){
+		categoryService.update(category);
+		return "updateSuccess";
+	}
 
 }

@@ -38,5 +38,9 @@ public class CategoryDao {
 	public void delete(Category category) {
 		hibernateTemplate.delete(category);
 	}
+	//dao层更新一级分类的方法
+	public void update(Category category) {
+		hibernateTemplate.update(category);
+	}
 
 }
