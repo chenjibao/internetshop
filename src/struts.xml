@@ -58,6 +58,12 @@
 			<result name="loginSuccess">/admin/home.jsp</result>
 		</action>
 		
+		
+		<!--后台一级分类管理的action-->
+		<action name="adminCategory_*" class="adminCategoryAction" method="{1}">
+			<result name="findAll">/admin/category/list.jsp</result>
+		</action>
+		
 		<!-- 验证码Action -->
 		<action name="checkImg" class="checkImgAction"></action>
 		
