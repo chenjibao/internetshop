@@ -117,6 +117,24 @@ public class ProductDao {
 				}
 				return null;
 	}
+	//dao层统计商品个数的方法
+	public int findCount() {
+		String hql="select count(*) from Product";
+		List<Long> list=(List<Long>) hibernateTemplate.find(hql);
+		if(list!=null && list.size()>0){
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+	//返回当前页商品的集合
+	public List<Product> findByPage(int begin, int limit) {
+		String hql="from Product order by pdate desc";
+		List<Product> list=hibernateTemplate.execute(new PageHibernateCallback<Product>(hql, null, begin, limit));
+		if(list!=null && list.size()>0){
+			return list;
+		}
+		return null;
+	}
 	
 	
 

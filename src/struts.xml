@@ -77,6 +77,11 @@
 			<result name="updateSuccess" type="redirectAction">adminCategorySecond_findAll.action?page=1</result>
 		</action>
 		
+		<!--后台管理商品的action-->
+		<action name="adminProduct_*" class="adminProductAction" method="{1}">
+			<result name="findAll">/admin/product/list.jsp</result>
+		</action>
+		
 		
 		<!-- 验证码Action -->
 		<action name="checkImg" class="checkImgAction"></action>

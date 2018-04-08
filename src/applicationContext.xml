@@ -116,6 +116,11 @@
 		<property name="categoryService" ref="categoryService"/>
 	</bean>
 	
+	<!-- 后台管理商品的Action-->
+	<bean id="adminProductAction" class="cjb.shop.product.adminaction.AdminProductAction" scope="prototype">
+		<property name="productService" ref="productService"/>
+	</bean>
+	
 	<!-- Service的配置 ======================================================================-->
 	<bean id="userService" class="cjb.shop.user.service.UserService">
 		<property name="userDao" ref="userDao"/>
