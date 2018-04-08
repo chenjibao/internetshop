@@ -26,5 +26,9 @@ public class CategoryDao {
 		List<Category> cList=(List<Category>) hibernateTemplate.find(hql);
 		return cList;
 	}
+	//持久层保存一级分类的方法
+	public void save(Category category) {
+		hibernateTemplate.save(category);
+	}
 
 }

@@ -28,6 +28,10 @@ public class CategoryService {
 	public List<Category> findAll() {
 		return categoryDao.findAll();
 	}
+	//业务层保存一级分类的方法
+	public void save(Category category) {
+		categoryDao.save(category);
+	}
 	
 
 }

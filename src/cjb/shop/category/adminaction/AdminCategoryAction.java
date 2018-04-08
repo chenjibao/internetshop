@@ -33,5 +33,10 @@ public class AdminCategoryAction extends ActionSupport implements ModelDriven<Ca
 		ActionContext.getContext().getValueStack().set("cList", cList);
 		return "findAll";
 	}
+	//后台添加一级分类的方法
+	public String save(){
+		categoryService.save(category);
+		return "saveSuccess";
+	}
 
 }
