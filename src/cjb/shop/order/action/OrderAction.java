@@ -33,6 +33,17 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 	//支付通道
 	private String pd_FrpId;
 	
+	// 接收付款成功后的参数:
+	private String r3_Amt;
+	private String r6_Order;
+	public void setR3_Amt(String r3_Amt) {
+		this.r3_Amt = r3_Amt;
+	}
+
+	public void setR6_Order(String r6_Order) {
+		this.r6_Order = r6_Order;
+	}
+
 	public void setPd_FrpId(String pd_FrpId) {
 		this.pd_FrpId = pd_FrpId;
 	}
@@ -162,4 +173,16 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 		return NONE;
 		
 	}
+	
+	// 付款成功后跳转回来的路径:
+		public String callBack(){
+			// 修改订单的状态:
+			Order currOrder = orderService.findByOid(Integer.parseInt(r6_Order));
+			// 修改订单状态为2:已经付款:
+			currOrder.setState(2);
+			orderService.update(currOrder);
+			this.addActionMessage("支付成功!订单编号为: "+r6_Order +" 付款金额为: "+r3_Amt);
+			return "msg";
+		}
+	
 }
