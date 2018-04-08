@@ -105,11 +105,15 @@
 		<property name="adminUserService" ref="adminUserService"/>
 	</bean>
 	
-	<!-- 后台一级分类的Action-->
+	<!-- 后台管理一级分类的Action-->
 	<bean id="adminCategoryAction" class="cjb.shop.category.adminaction.AdminCategoryAction" scope="prototype">
 		<property name="categoryService" ref="categoryService"/>
 	</bean>
 	
+	<!-- 后台管理二级分类的Action-->
+	<bean id="adminCategorySecondAction" class="cjb.shop.categorysecond.adminaction.AdminCategorySecondAction" scope="prototype">
+		<property name="categorySecondService" ref="categorySecondService"/>
+	</bean>
 	
 	<!-- Service的配置 ======================================================================-->
 	<bean id="userService" class="cjb.shop.user.service.UserService">
@@ -130,6 +134,10 @@
 	
 	<bean id="adminUserService" class="cjb.shop.adminuser.service.AdminUserService">
 		<property name="adminUserDao" ref="adminUserDao"/>
+	</bean>
+	
+	<bean id="categorySecondService" class="cjb.shop.categorysecond.service.CategorySecondService">
+		<property name="categorySecondDao" ref="categorySecondDao"/>
 	</bean>
 	
 	
@@ -154,6 +162,9 @@
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
 	
+	<bean id="categorySecondDao" class="cjb.shop.categorysecond.dao.CategorySecondDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
 </beans>
 
 
