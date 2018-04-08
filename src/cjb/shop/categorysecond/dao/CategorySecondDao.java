@@ -38,4 +38,8 @@ public class CategorySecondDao {
 				return null;
 			}
 
+			public void save(CategorySecond categorySecond) {
+				hibernateTemplate.save(categorySecond);
+			}
+
 }

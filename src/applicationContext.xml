@@ -113,6 +113,7 @@
 	<!-- 后台管理二级分类的Action-->
 	<bean id="adminCategorySecondAction" class="cjb.shop.categorysecond.adminaction.AdminCategorySecondAction" scope="prototype">
 		<property name="categorySecondService" ref="categorySecondService"/>
+		<property name="categoryService" ref="categoryService"/>
 	</bean>
 	
 	<!-- Service的配置 ======================================================================-->

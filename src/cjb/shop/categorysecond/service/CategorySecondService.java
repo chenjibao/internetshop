@@ -2,6 +2,8 @@ package cjb.shop.categorysecond.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import cjb.shop.categorysecond.dao.CategorySecondDao;
 import cjb.shop.categorysecond.domain.CategorySecond;
 import cjb.shop.utils.PageBean;
@@ -11,6 +13,7 @@ import cjb.shop.utils.PageBean;
  *@date2018年4月8日下午6:50:47
  *@description:二级分类管理业务层类
  */
+@Transactional
 public class CategorySecondService {
 	//注入dao
 	private CategorySecondDao categorySecondDao;
@@ -43,6 +46,10 @@ public class CategorySecondService {
 		List<CategorySecond> list = categorySecondDao.findByPage(begin,limit);
 		pageBean.setList(list);
 		return pageBean;
+	}
+	//保存分级分类的方法
+	public void save(CategorySecond categorySecond) {
+		categorySecondDao.save(categorySecond);
 	}
 	
 }
