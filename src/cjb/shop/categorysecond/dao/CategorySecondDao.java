@@ -50,5 +50,9 @@ public class CategorySecondDao {
 			public void datete(CategorySecond categorySecond) {
 				hibernateTemplate.delete(categorySecond);
 			}
+			//dao层修改二级分类的方法
+			public void update(CategorySecond categorySecond) {
+				hibernateTemplate.update(categorySecond);
+			}
 
 }
