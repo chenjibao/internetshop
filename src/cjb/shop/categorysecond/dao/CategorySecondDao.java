@@ -42,4 +42,13 @@ public class CategorySecondDao {
 				hibernateTemplate.save(categorySecond);
 			}
 
+			//DAo层根据二级分类id查询二级分类的方法
+			public CategorySecond findByCsid(Integer csid) {
+				return hibernateTemplate.get(CategorySecond.class, csid);
+			}
+			//DAo层删除二级分类的方法
+			public void datete(CategorySecond categorySecond) {
+				hibernateTemplate.delete(categorySecond);
+			}
+
 }
