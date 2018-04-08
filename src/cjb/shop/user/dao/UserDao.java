@@ -12,7 +12,7 @@ import cjb.shop.user.domain.User;
  *@description:用户模块持久层类
  */
 public class UserDao {
-	//得到hibernateTemplate对象
+		//得到hibernateTemplate对象
 		private HibernateTemplate hibernateTemplate;
 		public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 			this.hibernateTemplate = hibernateTemplate;
