@@ -38,5 +38,15 @@ public class AdminCategoryAction extends ActionSupport implements ModelDriven<Ca
 		categoryService.save(category);
 		return "saveSuccess";
 	}
+	
+	//后台删除一级分类的方法
+	public String delete(){
+		//查询
+		category=categoryService.findByCid(category.getCid());
+		//删除
+		categoryService.delete(category);
+		//页面跳转
+		return "deleteSuccess";
+	}
 
 }

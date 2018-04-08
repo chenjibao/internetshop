@@ -30,5 +30,13 @@ public class CategoryDao {
 	public void save(Category category) {
 		hibernateTemplate.save(category);
 	}
+	//持久层根据cid查询一级分类
+	public Category findByCid(Integer cid) {
+		return hibernateTemplate.get(Category.class,cid);
+	}
+	//dao层删除一级分类
+	public void delete(Category category) {
+		hibernateTemplate.delete(category);
+	}
 
 }
