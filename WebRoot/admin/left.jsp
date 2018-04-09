@@ -39,6 +39,6 @@
 	</script>
 </div>	</td>
   </tr>
-</table>
+</table>  
 </body>
 </html>
