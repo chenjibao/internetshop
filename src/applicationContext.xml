@@ -122,6 +122,11 @@
 		<property name="categorySecondService" ref="categorySecondService"/>
 	</bean>
 	
+	<!-- 订单管理的Action-->
+	<bean id="adminOrderAction" class="cjb.shop.order.adminaction.AdminOrderAction" scope="prototype">
+		<property name="orderService" ref="orderService"/>
+	</bean>
+	
 	<!-- Service的配置 ======================================================================-->
 	<bean id="userService" class="cjb.shop.user.service.UserService">
 		<property name="userDao" ref="userDao"/>

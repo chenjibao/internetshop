@@ -39,5 +39,23 @@ public class OrderDao {
 		public void update(Order currOrder) {
 			hibernateTemplate.update(currOrder);
 		}
+		//dao层统计订单个数的方法
+		public int findCount() {
+			String hql="select count(*) from Order";
+			List<Long> list=(List<Long>) hibernateTemplate.find(hql);
+			if(list!=null && list.size()>0){
+				return list.get(0).intValue();
+			}
+			return 0;
+		}
+		//dao层带分页的查询所有订单的方法
+		public List<Order> findByPage(int begin, int limit) {
+			String hql="from Order order by ordertime desc";
+			List<Order> list=hibernateTemplate.execute(new PageHibernateCallback<Order>(hql, null, begin, limit));
+			if(list!=null && list.size()>0){
+				return list;
+			}
+			return null;
+		}
 
 }
