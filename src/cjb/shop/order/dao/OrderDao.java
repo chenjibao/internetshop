@@ -3,7 +3,9 @@ package cjb.shop.order.dao;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.HibernateTemplate;
+
 import cjb.shop.order.domain.Order;
+import cjb.shop.order.domain.OrderItem;
 import utils.PageHibernateCallback;
 
 public class OrderDao {
@@ -52,6 +54,15 @@ public class OrderDao {
 		public List<Order> findByPage(int begin, int limit) {
 			String hql="from Order order by ordertime desc";
 			List<Order> list=hibernateTemplate.execute(new PageHibernateCallback<Order>(hql, null, begin, limit));
+			if(list!=null && list.size()>0){
+				return list;
+			}
+			return null;
+		}
+		//dao层根据订单id去查询订单项的方法
+		public List<OrderItem> findOrderItem(Integer oid) {
+			String hql="from OrderItem oi where oi.order.oid=?";
+			List<OrderItem> list=(List<OrderItem>) hibernateTemplate.find(hql, oid);
 			if(list!=null && list.size()>0){
 				return list;
 			}

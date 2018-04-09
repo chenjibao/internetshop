@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cjb.shop.order.dao.OrderDao;
 import cjb.shop.order.domain.Order;
+import cjb.shop.order.domain.OrderItem;
 import cjb.shop.utils.PageBean;
 
 /**
@@ -86,6 +87,11 @@ public class OrderService {
 		List<Order> list = orderDao.findByPage(begin,limit);
 		pageBean.setList(list);
 		return pageBean;
+	}
+
+	//业务层根据订单id去查询该订单所欲订单项的方法
+	public List<OrderItem> findOrderItem(Integer oid) {
+		return orderDao.findOrderItem(oid);
 	}
 
 
