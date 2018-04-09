@@ -140,6 +140,10 @@ public class ProductService {
 	public void save(Product product) {
 		productDao.save(product);
 	}
+	//删除商品的方法
+	public void delete(Product product) {
+		productDao.delete(product);
+	}
 	
 
 }

@@ -139,6 +139,10 @@ public class ProductDao {
 	public void save(Product product) {
 		hibernateTemplate.save(product);
 	}
+	//删除商品的方法
+	public void delete(Product product) {
+		hibernateTemplate.delete(product);
+	}
 	
 	
 

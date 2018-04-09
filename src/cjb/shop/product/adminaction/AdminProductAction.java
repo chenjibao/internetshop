@@ -105,4 +105,20 @@ public class AdminProductAction extends ActionSupport implements ModelDriven<Pro
 			productService.save(product);
 			return "saveSuccess";
 		}
+		
+		//删除商品的方法
+		public String delete(){
+			//先查询再删除
+			product=productService.findByPid(product.getPid());
+			//删除商品的图片
+			String path=product.getImage();
+			if(path!=null){
+				String realPath=ServletActionContext.getServletContext().getRealPath("/"+path);
+				System.out.println(realPath);
+				File file=new File(realPath);
+				file.delete();
+			}
+			productService.delete(product);
+			return "deleteSuccess";
+		}
 }
