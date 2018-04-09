@@ -143,6 +143,9 @@ public class ProductDao {
 	public void delete(Product product) {
 		hibernateTemplate.delete(product);
 	}
+	public void update(Product product) {
+		hibernateTemplate.update(product);
+	}
 	
 	
 
