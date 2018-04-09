@@ -24,7 +24,7 @@
 		<many-to-one name="user" lazy="false" class="cjb.shop.user.domain.User" column="uid"/>
 	
 		<!-- 订单与订单项关联配置 -->
-		<set name="orderItems" lazy="false" cascade="save-update">
+		<set name="orderItems"    lazy="false" cascade="save-update">
 			<key column="oid"/>
 			<one-to-many class="cjb.shop.order.domain.OrderItem"/>
 		</set>
