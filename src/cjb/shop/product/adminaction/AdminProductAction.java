@@ -121,4 +121,14 @@ public class AdminProductAction extends ActionSupport implements ModelDriven<Pro
 			productService.delete(product);
 			return "deleteSuccess";
 		}
+		//跳转到编辑页面的方法（带数据跳转）
+		public String edit(){
+			//根据商品的id查询该商品，为了将商品信息显示到编辑页面上
+			product=productService.findByPid(product.getPid());
+			//查询所有二级分类的集合
+			List<CategorySecond> csList=categorySecondService.findAll();
+			//商品的集合保存到值栈中
+			ActionContext.getContext().getValueStack().set("csList", csList);
+			return "editSuccess";
+		}
 }
