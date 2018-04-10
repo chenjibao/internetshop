@@ -55,7 +55,7 @@
 		<div class="span18 last">
 
 			<form id="productForm"
-				action="${pageContext.request.contextPath}/image/蔬菜 - Powered By Mango Team.htm"
+				action=""
 				method="get">
 
 				<div id="result" class="result table clearfix">
@@ -125,19 +125,46 @@
 		</div>
 		<div class="span24">
 			<ul class="bottomNav">
-				<li><a>关于我们</a> |</li>
-				<li><a>联系我们</a> |</li>
-				<li><a>诚聘英才</a> |</li>
-				<li><a>法律声明</a> |</li>
-				<li><a>友情链接</a> |</li>
-				<li><a target="_blank">支付方式</a> |</li>
-				<li><a target="_blank">配送方式</a> |</li>
-				<li><a>官网</a> |</li>
-				<li><a>论坛</a></li>
+				<li>
+						<a href="https://github.com/chenjibao">关于我们</a>
+						|
+					</li>
+					<li>
+						<a href="#" alt="17327364980@163.com">联系我们</a>
+						|
+					</li>
+					<li>
+						<a href="#">诚聘英才</a>
+						|
+					</li>
+					<li>
+						<a href="#">法律声明</a>
+						|
+					</li>
+					<li>
+						<a>友情链接</a>
+						|
+					</li>
+					<li>
+						<a target="_blank">支付方式</a>
+						|
+					</li>
+					<li>
+						<a target="_blank">配送方式</a>
+						|
+					</li>
+					<li>
+						<a href="http://www.cumt.edu.cn/">矿大官网</a>
+						|
+					</li>
+					<li>
+						<a href="https://bbs.csdn.net/home">CSDN论坛</a>
+						
+					</li>
 			</ul>
 		</div>
 		<div class="span24">
-			<div class="copyright">Copyright©2005-2015 网上商城 版权所有</div>
+			<div class="copyright">Copyright ©  2018  chenjibao 版权所有</div>
 		</div>
 	</div>
 </body>

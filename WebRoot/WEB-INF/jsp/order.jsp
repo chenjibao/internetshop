@@ -17,8 +17,8 @@
 <div class="container header">
 	<div class="span5">
 		<div class="logo">
-			<a href="./网上商城/index.htm">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客"/>
+			<a href="${pageContext.request.contextPath}/index.action">
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="筛宝商城"/>
 			</a>
 		</div>
 	</div>
@@ -136,11 +136,11 @@
 	<div class="span24">
 		<ul class="bottomNav">
 					<li>
-						<a href="#">关于我们</a>
+						<a href="https://github.com/chenjibao">关于我们</a>
 						|
 					</li>
 					<li>
-						<a href="#">联系我们</a>
+						<a href="#" alt="17327364980@163.com">联系我们</a>
 						|
 					</li>
 					<li>
@@ -164,17 +164,17 @@
 						|
 					</li>
 					<li>
-						<a >SHOP++官网</a>
+						<a href="http://www.cumt.edu.cn/">矿大官网</a>
 						|
 					</li>
 					<li>
-						<a>SHOP++论坛</a>
+						<a href="https://bbs.csdn.net/home">CSDN论坛</a>
 						
 					</li>
 		</ul>
 	</div>
 	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
+		<div class="copyright">Copyright ©  2018  chenjibao 版权所有</div>
 	</div>
 </div>
 </body>

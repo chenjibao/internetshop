@@ -18,7 +18,7 @@
 	<div class="span5">
 		<div class="logo">
 			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客">
+				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="筛宝商城">
 			</a>
 		</div>
 	</div>
@@ -48,7 +48,8 @@
 						<s:iterator var="cartItem" value="#session.cart.cartItems">
 						<tr>
 							<td width="60">
-								<img src="${pageContext.request.contextPath}/<s:property value="#cartItem.product.image"/>">
+								<a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#cartItem.product.pid"/>"><img src="${pageContext.request.contextPath}/<s:property value="#cartItem.product.image"/>"/></a>
+								<%-- <img src="${pageContext.request.contextPath}/<s:property value="#cartItem.product.image"/>"> --%>
 							</td>
 							<td>
 								<a target="_blank"><s:property value="#cartItem.product.pname"/></a>
@@ -87,8 +88,8 @@
 		</s:if>
 		<s:else>
 			<div class="span24">
-				<div class="step step1">
-					<span>亲！您还没有购物，请先去看看您喜欢的宝贝吧！</span>
+				<div class="step step1" align="center">
+					<span><font color="red">亲！您还没有购物，请先去看看您喜欢的宝贝吧！</font></span>
 				</div>
 			</div>
 		</s:else>
@@ -101,19 +102,19 @@
 	<div class="span24">
 		<ul class="bottomNav">
 				<li>
-						<a >关于我们</a>
+						<a href="https://github.com/chenjibao">关于我们</a>
 						|
 					</li>
 					<li>
-						<a>联系我们</a>
+						<a href="#" alt="17327364980@163.com">联系我们</a>
 						|
 					</li>
 					<li>
-						<a>招贤纳士</a>
+						<a href="#">诚聘英才</a>
 						|
 					</li>
 					<li>
-						<a>法律声明</a>
+						<a href="#">法律声明</a>
 						|
 					</li>
 					<li>
@@ -125,21 +126,21 @@
 						|
 					</li>
 					<li>
-						<a  target="_blank">配送方式</a>
+						<a target="_blank">配送方式</a>
 						|
 					</li>
 					<li>
-						<a>服务声明</a>
+						<a href="http://www.cumt.edu.cn/">矿大官网</a>
 						|
 					</li>
 					<li>
-						<a>广告声明</a>
+						<a href="https://bbs.csdn.net/home">CSDN论坛</a>
 						
 					</li>
 		</ul>
 	</div>
 	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
+		<div class="copyright">Copyright ©  2018  chenjibao 版权所有</div>
 	</div>
 </div>
 </body></html>
