@@ -19,7 +19,7 @@
 	<div class="container header">
 		<div class="span5">
 			<div class="logo">
-				<a href="./网上商城/index.htm"> <img
+				<a href="${pageContext.request.contextPath}/index.action"> <img
 					src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif"
 					alt="筛宝商城" />
 				</a>
@@ -137,7 +137,7 @@
 					<strong>最新商品</strong> <a target="_blank"></a>
 				</div>
 				<ul class="tab">
-					<li class="current"><a href="./蔬菜分类.htm?tagIds=2"
+					<li class="current"><a href=""
 						target="_blank"></a></li>
 					<li><a target="_blank"></a></li>
 					<li><a target="_blank"></a></li>
@@ -240,18 +240,11 @@
 						<a target="_blank">购物帮助</a> |
 					</dd>
 					<dd>
-						<a target="_blank">蔬菜卡</a> |
-					</dd>
-					<dd>
 						<a target="_blank">礼品卡</a> |
 					</dd>
 					<dd>
 						<a target="_blank">银联卡</a> |
 					</dd>
-					<dd>
-						<a target="_blank">亿家卡</a> |
-					</dd>
-
 					<dd class="more">
 						<a>更多</a>
 					</dd>
@@ -268,15 +261,42 @@
 		</div>
 		<div class="span24">
 			<ul class="bottomNav">
-				<li><a>关于我们</a> |</li>
-				<li><a>联系我们</a> |</li>
-				<li><a>招贤纳士</a> |</li>
-				<li><a>法律声明</a> |</li>
-				<li><a>友情链接</a> |</li>
-				<li><a target="_blank">支付方式</a> |</li>
-				<li><a target="_blank">配送方式</a> |</li>
-				<li><a>服务声明</a> |</li>
-				<li><a>广告声明</a></li>
+				<li>
+						<a href="https://github.com/chenjibao">关于我们</a>
+						|
+					</li>
+					<li>
+						<a href="#" alt="17327364980@163.com">联系我们</a>
+						|
+					</li>
+					<li>
+						<a href="#">诚聘英才</a>
+						|
+					</li>
+					<li>
+						<a href="#">法律声明</a>
+						|
+					</li>
+					<li>
+						<a>友情链接</a>
+						|
+					</li>
+					<li>
+						<a target="_blank">支付方式</a>
+						|
+					</li>
+					<li>
+						<a target="_blank">配送方式</a>
+						|
+					</li>
+					<li>
+						<a href="http://www.cumt.edu.cn/">矿大官网</a>
+						|
+					</li>
+					<li>
+						<a href="https://bbs.csdn.net/home">CSDN论坛</a>
+						
+					</li>
 			</ul>
 		</div>
 		<div class="span24">

@@ -21,13 +21,13 @@
 				</li>
 			</s:else>
 						<li>
-							<a>会员中心</a>
+							<a>会员中心</a>|
 						</li>
 						<li>
-							<a>购物指南</a>
+							<a href="http://re.jd.com/">购物指南</a>|
 						</li>
 						<li>
-							<a>关于我们</a>
+							<a href="https://github.com/chenjibao">关于我们</a>
 						</li>
 			</ul>
 		</div>
@@ -36,7 +36,7 @@
 		</div>
 			<div class="phone">
 				客服热线:
-				<strong>96008/53277764</strong>
+				<strong>17327364980</strong>
 			</div>
 	</div>
 	<div class="span24">

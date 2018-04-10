@@ -58,6 +58,10 @@
 					</a>
 				
 			</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
 			<div class="name"><s:property value="model.pname"/></div>
 			<div class="sn">
 				<div>编号：<s:property value="model.pid"/></div>
@@ -74,7 +78,7 @@
 					<dl>
 						<dt>促销:</dt>
 						<dd>
-								<a target="_blank" title="限时抢购 (2014-07-30 ~ 2015-01-01)">限时抢购</a>
+								<a target="_blank" title="限时抢购 (2018-4-10 ~ 2019-01-01)">限时抢购</a>
 						</dd>
 					</dl>
 					<dl>
@@ -105,7 +109,7 @@
 			<div id="bar" class="bar">
 				<ul>
 						<li id="introductionTab">
-							<a href="#introduction">商品介绍</a>
+							<a href="#introduction">商品详情</a>
 						</li>
 						
 				</ul>
@@ -113,9 +117,9 @@
 				
 				<div id="introduction" name="introduction" class="introduction">
 					<div class="title">
-						<strong><s:property value="model.pdesc"/></strong>
+						<strong><font color="blue"><s:property value="model.pdesc"/></font></strong>
 					</div>
-					<div>
+					<div align="center">
 						<img src="${pageContext.request.contextPath }/<s:property value="model.image"/>">
 					</div>
 				</div>
@@ -133,11 +137,11 @@
 	<div class="span24">
 		<ul class="bottomNav">
 					<li>
-						<a href="#">关于我们</a>
+						<a href="https://github.com/chenjibao">关于我们</a>
 						|
 					</li>
 					<li>
-						<a href="#">联系我们</a>
+						<a href="#" alt="17327364980@163.com">联系我们</a>
 						|
 					</li>
 					<li>
@@ -161,17 +165,17 @@
 						|
 					</li>
 					<li>
-						<a >SHOP++官网</a>
+						<a href="http://www.cumt.edu.cn/">矿大官网</a>
 						|
 					</li>
 					<li>
-						<a>SHOP++论坛</a>
+						<a href="https://bbs.csdn.net/home">CSDN论坛</a>
 						
 					</li>
 		</ul>
 	</div>
 	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
+		<div class="copyright">Copyright ©  2018  chenjibao 版权所有</div>
 	</div>
 </div>
 </body>
