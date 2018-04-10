@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import cjb.shop.user.domain.User;
+import utils.PageHibernateCallback;
+
 
 /**
  * @author chenjibao
@@ -77,5 +79,33 @@ public class UserDao {
 			return list.get(0);
 		}
 		return null;
+	}
+
+
+	public List<User> findByPage(int begin, int limit) {
+		String hql = "from User";
+		List<User> list = hibernateTemplate.execute(
+				new PageHibernateCallback<User>(hql, null, begin, limit));
+		return list;
+	}
+
+
+	public int findCount() {
+		String hql = "select count(*) from User";
+		List<Long> list = (List<Long>) hibernateTemplate.find(hql);
+		if (list != null && list.size() > 0) {
+			return list.get(0).intValue();
+		}
+		return 0;
+	}
+
+
+	public User findByUid(Integer uid) {
+		return hibernateTemplate.get(User.class, uid);
+	}
+
+
+	public void delete(User existUser) {
+		hibernateTemplate.delete(existUser);
 	}
 }
