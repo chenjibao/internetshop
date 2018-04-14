@@ -9,8 +9,8 @@
 <link href="${pageContext.request.contextPath}/css/product.css" rel="stylesheet" type="text/css">
 <script>
 	function saveCart(){
-		/* document.getElementById("cartForm").submit(); */
-		window.location.href = "https://pan.baidu.com/s/1j9uA9mLOGxuioSJuRA3L0g";
+		 document.getElementById("cartForm").submit(); 
+		/* window.location.href = "https://pan.baidu.com/s/1j9uA9mLOGxuioSJuRA3L0g"; */
 		
 	}
 	function addCategory(){
