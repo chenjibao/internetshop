@@ -34,6 +34,9 @@ public class MailUitls {
 		Properties props = new Properties();
 		props.setProperty("mail.host", "smtp.163.com");
 		props.setProperty("mail.smtp.auth", "true");// 指定验证为true
+		props.setProperty("smtp.port", "465");
+		props.setProperty("smtp.ssl", "true");
+		props.setProperty("postoffice.implementation", "ninja.postoffice.commonsmail.PostofficeCommonsmailImpl");
 		Session session = Session.getInstance(props, new Authenticator() {
 
 			@Override
@@ -53,7 +56,7 @@ public class MailUitls {
 			// 设置标题
 			message.setSubject("来自筛宝商城激活邮件");
 			// 设置邮件正文:
-			message.setContent("<h1>筛宝商城激活邮件!点下面链接完成激活操作!</h1><h3><a href='http://localhost:8080/internetshop/user_active.action?code="+code+"'>http://localhost:8080/internetshop/user_active.action?code="+code+"</a></h3>", "text/html;charset=UTF-8");
+			message.setContent("<h1>筛宝商城激活邮件!点下面链接完成激活操作!</h1><h3><a href='http://47.94.18.84:8080/shaibao/user_active.action?code="+code+"'>http://47.94.18.84:8080/shaibao/user_active.action?code="+code+"</a></h3>", "text/html;charset=UTF-8");
 			// 3.发送邮件:
 			Transport.send(message);
 			System.out.println("邮件发送成功");
@@ -65,7 +68,4 @@ public class MailUitls {
 		
 	}
 	
-	public static void main(String[] args) {
-		sendMail("aaa@shop.com","11111111111111");
-	}
 }

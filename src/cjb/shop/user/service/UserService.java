@@ -41,12 +41,12 @@ public class UserService {
 	// 业务层完成用户注册代码:
 	public void save(User user) {
 		// 将数据存入到数据库
-		user.setState(0); // 0:代表用户未激活.  1:代表用户已经激活.
+		user.setState(1); // 0:代表用户未激活.  1:代表用户已经激活.
 		String code = UUIDUtils.getUUID()+UUIDUtils.getUUID();
 		user.setCode(code);
 		userDao.save(user);
-		
-		MailUitls.sendMail(user.getEmail(), code);
+		//因为阿里云服务器端口25没有解封，所以暂时关闭邮件发送功能
+		//MailUitls.sendMail(user.getEmail(), code);
 		/*
 		 * 发邮件
 		 * 准备配置文件！
