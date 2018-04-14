@@ -13,9 +13,6 @@
 		/* window.location.href = "https://pan.baidu.com/s/1j9uA9mLOGxuioSJuRA3L0g"; */
 		
 	}
-	function addCategory(){
-		window.location.href = "${pageContext.request.contextPath}/admin/category/add.jsp";
-	}
 </script>
 
 </head>
