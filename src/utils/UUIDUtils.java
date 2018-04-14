@@ -3,7 +3,7 @@ package utils;
 import java.util.UUID;
 
 /**
- * @author chenjibao
+ *@author chenjibao
  *@date2018年3月31日上午9:48:02
  *@description:生成随机字符串的工具类
  */
